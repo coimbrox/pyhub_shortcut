@@ -1,0 +1,20 @@
+# MANIFEST.in
+# Inclui arquivos extras na distribuição
+
+include README.md
+include LICENSE
+include *.py
+include requirements.txt
+
+# Inclui arquivos de exemplo
+recursive-include examples *.py
+
+# Inclui assets se existirem
+recursive-include assets *
+
+# Exclui arquivos desnecessários
+global-exclude *.pyc
+global-exclude __pycache__
+global-exclude .git*
+global-exclude *.so
+global-exclude *.pyd

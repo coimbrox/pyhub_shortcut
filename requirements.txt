@@ -1,0 +1,13 @@
+# Dependências principais
+keyboard>=1.13.0
+mouse>=0.7.1
+PyQt5>=5.15.0
+
+# Dependências de desenvolvimento
+pyinstaller>=5.0.0
+build>=0.10.0
+twine>=4.0.0
+
+# Dependências opcionais para testes
+pytest>=7.0.0
+pytest-cov>=4.0.0

@@ -1,0 +1,3 @@
+[console_scripts]
+droplist-demo = examples.droplist_demo:main
+pyhub-droplist = pyhub_shortcut.cli:main

@@ -1,0 +1,332 @@
+Metadata-Version: 2.4
+Name: pyhub-droplist-coimbrox
+Version: 0.1.1
+Summary: Biblioteca Python para criar menus DropList interativos com atalhos de teclado + scroll do mouse
+Home-page: https://github.com/coimbrox/pyhub-shortcut
+Author: Gabriel Coimbra
+Author-email: Gabriel Coimbra <seu-email@exemplo.com>
+Maintainer-email: Gabriel Coimbra <seu-email@exemplo.com>
+License: MIT
+Project-URL: Homepage, https://github.com/coimbrox/pyhub-shortcut
+Project-URL: Repository, https://github.com/coimbrox/pyhub-shortcut.git
+Project-URL: Issues, https://github.com/coimbrox/pyhub-shortcut/issues
+Project-URL: Documentation, https://github.com/coimbrox/pyhub-shortcut#readme
+Keywords: shortcuts,hotkeys,droplist,automation,productivity,gui,mouse,keyboard
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Desktop Environment
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: System :: Systems Administration
+Classifier: Topic :: Utilities
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: keyboard>=0.13.0
+Requires-Dist: mouse>=0.7.1
+Requires-Dist: PyQt5>=5.15.0
+Provides-Extra: dev
+Requires-Dist: pyinstaller>=5.0.0; extra == "dev"
+Requires-Dist: build>=0.10.0; extra == "dev"
+Requires-Dist: twine>=4.0.0; extra == "dev"
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.0.0; extra == "dev"
+Dynamic: author
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-python
+
+# 🎯 PyHub DropList
+
+[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://python.org)
+[![PyPI Version](https://img.shields.io/pypi/v/pyhub-droplist-coimbrox.svg)](https://pypi.org/project/pyhub-droplist-coimbrox/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/pyhub-droplist-coimbrox.svg)](https://pypi.org/project/pyhub-droplist-coimbrox/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/coimbrox/pyhub-shortcut.svg)](https://github.com/coimbrox/pyhub-shortcut/stargazers)
+
+Biblioteca Python moderna para criar **menus DropList interativos** acionados por **atalhos de teclado + scroll do mouse**. Acesso instantâneo a suas ações favoritas sem tirar as mãos do teclado! 🚀
+
+> 🌟 **Primeira biblioteca do mundo** que combina hotkeys + scroll em uma solução completa de produtividade!
+
+## 💡 Conceito DropList
+
+O DropList é um padrão de interação inovador que combina:
+- **Tecla Modificadora** (Ctrl, Alt, Shift) + **Scroll do Mouse**
+- **Menu contextual** aparece instantaneamente na posição do cursor
+- **Navegação rápida** com scroll ou setas
+- **Execução imediata** com Enter ou click
+
+> 🎮 **Exemplo**: `Ctrl + Scroll` → Menu de desenvolvimento aparece → Scroll para navegar → Enter para executar
+
+## ✨ Features
+
+- 🎯 **DropLists personalizáveis** com atalhos inteligentes
+- 🖱️ **Integração teclado + mouse** para máxima eficiência  
+- ⚡ **Menus contextuais rápidos** que aparecem no cursor
+- 🎨 **Interface moderna** com PyQt5 e temas escuros
+- ⚙️ **Configuração flexível** via JSON ou código
+- 🔄 **Recarregamento dinâmico** sem reiniciar
+- 📝 **Logging integrado** para debugging
+- 🛡️ **Tratamento robusto de erros**
+
+## 🚀 Por Que PyHub DropList é Revolucionário?
+
+### 🎯 **Conceito Único no Mercado**
+Primeira biblioteca Python que combina **atalhos de teclado + scroll do mouse** em uma solução completa. Não é mais uma biblioteca de hotkeys - é um **novo paradigma de interação**!
+
+### 💡 **Problema Resolvido**
+```python
+# ❌ ANTES: Memorizar dezenas de atalhos
+hotkey('ctrl+shift+1', action1)
+hotkey('ctrl+shift+2', action2) 
+hotkey('ctrl+shift+3', action3)
+# ... memorizar 50+ combinações!
+
+# ✅ AGORA: Um atalho, navegação visual
+manager.register_droplist('ctrl', [action1, action2, action3])
+# Ctrl + Scroll = menu visual, sem memorização!
+```
+
+### 🌟 **Vantagens Competitivas**
+
+| Aspecto | Bibliotecas Tradicionais | **PyHub DropList** |
+|---------|-------------------------|---------------------|
+| **Navegação** | Memorizar atalhos | 🎯 Visual com scroll |
+| **Interface** | Só teclado | 🖱️ Teclado + Mouse |
+| **Ergonomia** | Memorização forçada | 🧠 Intuição natural |
+| **Flexibilidade** | Atalhos fixos | 🔄 Menus dinâmicos |
+| **Curva de Aprendizado** | Alta (decorar) | 📈 Baixa (visual) |
+| **Produtividade** | Limitada por memória | ⚡ Ilimitada |
+
+### 🎮 **Casos de Uso Poderosos**
+
+#### **Para Desenvolvedores:**
+```python
+dev_actions = [
+    DropListAction("🔨 Build Project", "npm run build"),
+    DropListAction("🧪 Run Tests", "npm test"),
+    DropListAction("🚀 Deploy", "npm run deploy"),
+    DropListAction("📦 Install Deps", "npm install")
+]
+manager.register_droplist('ctrl+d', dev_actions)
+# Ctrl+D + Scroll = workflow completo!
+```
+
+#### **Para Designers:**
+```python
+design_actions = [
+    DropListAction("🎨 Photoshop", "photoshop.exe"),
+    DropListAction("✏️ Illustrator", "illustrator.exe"),
+    DropListAction("🎬 After Effects", "aftereffects.exe")
+]
+# Alt + Scroll = suite criativa na ponta dos dedos!
+```
+
+#### **Para Gamers/Streamers:**
+```python
+stream_actions = [
+    DropListAction("📹 Start Recording", toggle_recording),
+    DropListAction("🎤 Mute Mic", toggle_mic),
+    DropListAction("💬 Toggle Chat", toggle_chat)
+]
+# Shift + Scroll = controles de stream instantâneos!
+```
+
+### 🏗️ **Arquitetura de Biblioteca Profissional**
+- **API Limpa**: `DropListManager`, `DropListAction` - simples e poderosa
+- **Modular**: Cada componente tem responsabilidade específica
+- **Extensível**: Fácil de customizar e expandir
+- **Threading**: Não trava o sistema, roda em background
+- **Cross-platform**: Windows, Linux, macOS (PyQt5)
+
+### 🎯 **Por Que Desenvolvedores Vão Amar**
+
+1. **⚡ Produtividade Instantânea**: 5 linhas = sistema completo
+2. **🧠 Zero Curva de Aprendizado**: API intuitiva e bem documentada  
+3. **🛡️ Robusto**: Threading, tratamento de erros, logging integrado
+4. **🎨 Customizável**: Temas, ícones, ações personalizadas
+5. **📦 Pronto para Produção**: Já no PyPI, executável standalone
+
+> **"Não criamos apenas mais uma biblioteca de shortcuts - criamos um novo paradigma de interação que pode influenciar como interfaces são pensadas no futuro!"** 🌟
+
+## 🚀 Instalação Rápida
+
+### 📦 Via PyPI (Recomendado)
+```bash
+# Instala direto do PyPI oficial
+pip install pyhub-droplist-coimbrox
+```
+
+### 🔧 Via Código Fonte
+```bash
+# Clona o repositório
+git clone https://github.com/coimbrox/pyhub-shortcut.git
+cd pyhub-shortcut
+
+# Instala dependências
+pip install keyboard mouse pyqt5
+
+# Instala em modo desenvolvimento
+pip install -e .
+```
+
+### 💾 Executável Standalone
+- **Download**: [PyHubDropList.exe](https://github.com/coimbrox/pyhub-shortcut/releases) (37MB)
+- **Não requer Python** instalado
+- **Pronto para usar** - apenas execute!
+
+## 🎮 Uso Rápido - DropList
+
+```python
+from pyhub_shortcut.droplist_manager import DropListManager, DropListAction
+
+# Cria ações para o menu
+dev_actions = [
+    DropListAction("🌐 GitHub", "start https://github.com", "🌐"),
+    DropListAction("💻 VS Code", "code .", "💻"),
+    DropListAction("📁 Explorer", "explorer .", "📁"),
+]
+
+# Cria e configura o manager
+manager = DropListManager()
+manager.register_droplist("ctrl", dev_actions, "development")
+manager.start()
+
+# Agora use: Ctrl + Scroll para ver o menu!
+```
+
+## 📖 Uso Detalhado
+
+### Exemplo Completo
+
+```bash
+# Executa exemplo completo
+python examples/droplist_demo.py
+```
+
+**Controles disponíveis:**
+- `Ctrl + Scroll` → Menu de Desenvolvimento
+- `Alt + Scroll` → Menu de Produtividade  
+- `Shift + Scroll` → Menu de Utilitários
+
+## 🎛️ Configuração
+
+As configurações são salvas em `~/.pyhub_shortcut/config.json`:
+
+```json
+{
+  "actions": [
+    {
+      "label": "Abrir Google",
+      "command": "start https://www.google.com",
+      "hotkey": "ctrl+1"
+    },
+    {
+      "label": "VS Code",
+      "command": "code .",
+      "hotkey": "ctrl+2"
+    }
+  ]
+}
+```
+
+## 📁 Estrutura do Projeto
+
+```
+pyhub_shortcut/
+├── __init__.py          # API principal
+├── config.py            # Configurações básicas (legacy)
+├── config_manager.py    # Gerenciador moderno de configurações
+├── core.py              # Core básico (legacy)
+├── core_improved.py     # Core melhorado com logging
+├── ui.py                # Interface PyQt
+└── cli.py               # Interface de linha de comando
+```
+
+## 🔧 Exemplos Avançados
+
+```bash
+# Exemplo básico
+python examples/demo.py
+
+# Exemplo avançado com configuração personalizada
+python examples/demo_advanced.py --advanced
+```
+
+## 🛠️ Dependências
+
+- `keyboard` - Para captura de atalhos globais
+- `mouse` - Para detecção de scroll e posição do cursor
+- `PyQt5` - Para interface gráfica moderna
+
+## 🌐 Distribuição
+
+### 📦 **PyPI Oficial**
+- **Pacote**: [pyhub-droplist-coimbrox](https://pypi.org/project/pyhub-droplist-coimbrox/)
+- **Instalação**: `pip install pyhub-droplist-coimbrox`
+- **Versão atual**: 0.1.0
+
+### 🎮 **GitHub Release**
+- **Executável**: [PyHubDropList.exe](https://github.com/coimbrox/pyhub-shortcut/releases) (37MB)
+- **Não requer Python** - pronto para usar
+- **Download direto** para usuários finais
+
+### 👨‍💻 **Para Desenvolvedores**
+```bash
+# Instala da fonte
+pip install pyhub-droplist-coimbrox
+
+# Importa e usa
+from pyhub_shortcut.droplist_manager import DropListManager
+```
+
+### 👤 **Para Usuários Finais**
+1. Baixe [PyHubDropList.exe](https://github.com/coimbrox/pyhub-shortcut/releases)
+2. Execute diretamente
+3. Configure seus DropLists
+4. Use Ctrl+Scroll para acessar!
+
+## 📋 To-Do / Roadmap
+
+- [x] ✅ Sistema básico de DropList com atalhos + scroll
+- [x] ✅ Interface PyQt5 moderna e responsiva
+- [x] ✅ Múltiplos DropLists com teclas diferentes
+- [ ] 🔄 Sistema de plugins para ações customizadas
+- [ ] 🎨 Temas personalizáveis (claro/escuro/custom)
+- [ ] 📱 Interface gráfica para gerenciamento de DropLists
+- [ ] 🔧 Suporte a scripts Python como ações
+- [ ] 👥 Profiles de usuário e configurações
+- [ ] 🌍 Suporte multiplataforma (Linux/macOS)
+- [ ] 🔗 Integração com bandejas do sistema
+- [ ] 📊 Analytics de uso e ações mais utilizadas
+
+## 🤝 Contribuindo
+
+Contribuições são bem-vindas! Por favor:
+
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## 📄 Licença
+
+Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+
+## 👨‍💻 Autor
+
+**Gabriel Coimbra**
+- GitHub: [@coimbrox](https://github.com/coimbrox)
+
+---
+
+⭐ **Gostou do projeto? Deixe uma estrela!**

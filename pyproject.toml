@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyhub-droplist-coimbrox"
+version = "0.1.1"
+description = "Biblioteca Python para criar menus DropList interativos com atalhos de teclado + scroll do mouse"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Gabriel Coimbra", email = "seu-email@exemplo.com"}
+]
+maintainers = [
+    {name = "Gabriel Coimbra", email = "seu-email@exemplo.com"}
+]
+keywords = ["shortcuts", "hotkeys", "droplist", "automation", "productivity", "gui", "mouse", "keyboard"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Desktop Environment",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "keyboard>=0.13.0",
+    "mouse>=0.7.1",
+    "PyQt5>=5.15.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pyinstaller>=5.0.0",
+    "build>=0.10.0", 
+    "twine>=4.0.0",
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/coimbrox/pyhub-shortcut"
+Repository = "https://github.com/coimbrox/pyhub-shortcut.git"
+Issues = "https://github.com/coimbrox/pyhub-shortcut/issues"
+Documentation = "https://github.com/coimbrox/pyhub-shortcut#readme"
+
+[project.scripts]
+pyhub-droplist = "pyhub_shortcut.cli:main"
+droplist-demo = "examples.droplist_demo:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pyhub_shortcut*"]
+exclude = ["tests*"]
+
+[tool.setuptools.package-data]
+pyhub_shortcut = ["*.json", "*.txt"]

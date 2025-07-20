@@ -2,10 +2,10 @@
 
 
 a = Analysis(
-    ['examples\\droplist_demo.py'],
+    ['examples\\droplist_tray.py'],
     pathex=[],
     binaries=[],
-    datas=[('pyhub_shortcut', 'pyhub_shortcut')],
+    datas=[('pyhub_shortcut', 'pyhub_shortcut'), ('assets', 'assets')],
     hiddenimports=['PyQt5.QtCore', 'PyQt5.QtGui', 'PyQt5.QtWidgets', 'keyboard', 'mouse'],
     hookspath=[],
     hooksconfig={},
@@ -35,4 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon=['assets\\icon.ico'],
 )

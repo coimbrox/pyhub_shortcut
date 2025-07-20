@@ -14,12 +14,13 @@ def build_executable():
 
     # Configurações do PyInstaller
     args = [
-        "examples/droplist_demo.py",  # Script principal
+        "examples/droplist_tray.py",  # Script principal com system tray
         "--onefile",  # Um único arquivo executável
         "--windowed",  # Sem console (para GUI)
         "--name=PyHubDropList",  # Nome do executável
         "--icon=assets/icon.ico",  # Ícone (se existir)
         "--add-data=pyhub_shortcut;pyhub_shortcut",  # Inclui o módulo
+        "--add-data=assets;assets",  # Inclui assets (ícones)
         "--hidden-import=PyQt5.QtCore",
         "--hidden-import=PyQt5.QtGui",
         "--hidden-import=PyQt5.QtWidgets",

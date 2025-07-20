@@ -25,7 +25,7 @@ class DropListAction:
 class DropListManager:
     """
     Gerenciador principal para menus DropList
-    Combina atalhos de teclado + scroll do mouse para mostrar menus contextuais
+    Combina atalhos de teclado + clique do meio do mouse para mostrar menus contextuais
     """
 
     def __init__(self):
@@ -34,9 +34,8 @@ class DropListManager:
         self.current_menu = None
         self.actions: Dict[str, List[DropListAction]] = {}
         self.trigger_combinations = {}
-        self.scroll_buffer = []
-        self.last_scroll_time = 0
-        self.scroll_threshold = 0.1  # segundos entre scrolls
+        self.last_middle_click_time = 0  # Para clique do meio
+        self.middle_click_threshold = 0.1  # segundos entre cliques
 
     def register_droplist(
         self, trigger_key: str, actions: List[DropListAction], menu_id: str = "default"
@@ -73,17 +72,17 @@ class DropListManager:
         while self.active:
             for trigger_key, menu_id in self.trigger_combinations.items():
                 if keyboard.is_pressed(trigger_key):
-                    # Espera por scroll enquanto a tecla estiver pressionada
-                    self._wait_for_scroll_while_pressed(trigger_key, menu_id)
+                    # Espera por clique do meio enquanto a tecla estiver pressionada
+                    self._wait_for_middle_click_while_pressed(trigger_key, menu_id)
             time.sleep(0.01)
 
-    def _wait_for_scroll_while_pressed(self, trigger_key: str, menu_id: str):
-        """Espera por scroll enquanto a tecla trigger estiver pressionada"""
+    def _wait_for_middle_click_while_pressed(self, trigger_key: str, menu_id: str):
+        """Espera por clique do meio enquanto a tecla trigger estiver pressionada"""
         start_time = time.time()
 
         while keyboard.is_pressed(trigger_key) and self.active:
-            # Se houve scroll recente, mostra o menu
-            if (time.time() - self.last_scroll_time) < 0.5:
+            # Se houve clique do meio recente, mostra o menu
+            if (time.time() - self.last_middle_click_time) < 0.5:
                 self._show_droplist(menu_id)
                 break
 
@@ -94,19 +93,18 @@ class DropListManager:
             time.sleep(0.01)
 
     def _mouse_event_handler(self, event):
-        """Handler para eventos do mouse, filtra apenas scroll"""
-        if hasattr(event, "event_type") and event.event_type == "wheel":
-            current_time = time.time()
-            dy = getattr(event, "delta", 0)
+        """Handler para eventos do mouse, filtra clique do meio"""
+        if hasattr(event, "event_type"):
+            # Detecta clique do botão do meio (scroll wheel click)
+            if (
+                event.event_type == "down"
+                and hasattr(event, "button")
+                and event.button == "middle"
+            ):
+                current_time = time.time()
 
-            # Registra o scroll
-            self.last_scroll_time = current_time
-            self.scroll_buffer.append((current_time, dy))
-
-            # Limpa buffer antigo
-            self.scroll_buffer = [
-                (t, scroll) for t, scroll in self.scroll_buffer if current_time - t < 1.0
-            ]
+                # Atualiza timestamp do último clique do meio
+                self.last_middle_click_time = current_time
 
     def _show_droplist(self, menu_id: str):
         """Mostra o menu DropList especificado"""
